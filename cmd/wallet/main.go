@@ -14,7 +14,7 @@ import (
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	mux := http.NewServeMux()
-	mux.HandleFunc("/GET /healthz", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
 		logger.Info("Health Check", "remote", r.RemoteAddr)
 		w.Header().Set("Content-Type", "application/json")
 		w.Write([]byte(`{"Status":"Ok"}` + "\n"))
