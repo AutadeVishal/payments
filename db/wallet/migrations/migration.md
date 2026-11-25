@@ -2,4 +2,5 @@
 2. migrate create -ext sql -dir db/wallet/migrations -seq init_ledger
 3. migrate -path db/wallet/migrations \
   -database "postgres://payments:Payments%40123@localhost:5432/wallet_db?sslmode=disable" up
-4. docker compose exec postgres  psql -U payments -d wallet_db -c 'SELECT * FROM schema_migrations' -- to Connect to db in postgres and talk to postgres we alwyas need to connect to some db
+
+same things are added in MakeFile to easily create new migrate up and down it

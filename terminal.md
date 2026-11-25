@@ -1,0 +1,2 @@
+1. ** to Connect to db in postgres and talk to postgres we alwyas need to connect to some db** docker compose exec postgres  psql -U payments -d wallet_db -c 'SELECT * FROM schema_migrations'
+2. **To Type Custom large sql qeuries using file** : docker compose   exec -T  postgres psql -U payments -d payment_db -q < scratch.sql 
