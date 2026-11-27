@@ -19,8 +19,9 @@ migrate-new:
 	@migrate create -ext sql -dir db/$(SERVICE)/migrations -seq "$(name)"
 
 docker-run-sql-file:
-	@test -n "$(file)" || { echo "usage: make docker-run-sql-file name=scratch.sql"; exit 1; }
-	@docker compose exec -T postgres psql -U payments -d payment_db -q < "$(file)"
+	@test -n "$(file)" || { echo "usage: make docker-run-sql-file name=scratch.sql database=database_name"; exit 1; }
+	@test -n "$(database)" || { echo "usage: make docker-run-sql-file name=scratch.sql database=database_name"; exit 1; }
+	@docker compose exec -T postgres psql -U payments -d $(database) -q < "$(file)"
 
 docker-run-sql-query:
 	@test -n "$(query)" || { echo "usage: make docker-run-sql-query query='SELECT 1;'"; exit 1; }
