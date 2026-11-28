@@ -6,7 +6,7 @@ CREATE TYPE entry_direction AS ENUM ('debit', 'credit');
 -- An account is anything that holds money: a user's wallet, or a
 -- system account, like the bank account that deposits come from.
 CREATE TABLE accounts (
-    id             uuid            PRIMARY KEY DEFAULT gen_random_uuid(),
+    id             uuid            PRIMARY KEY DEFAULT  gen_random_uuid(),
     -- the user from the auth service; NULL for system accounts
     owner_id       uuid,
     name           text            NOT NULL CHECK (name <> ''),
